@@ -2,4 +2,4 @@
 
 Leaflet Start Guide
 
-:heart_eyes:
+:heart_eyes: :eight_spoked_asterisk::eight_spoked_asterisk::eight_spoked_asterisk::eight_spoked_asterisk:
