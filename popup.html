@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Quick Start - Leaflet</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+            integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+            crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+    </head>
+
+    <body>
+        <div style="margin: 50px;">
+            <div id="mapid" style="width: 600px; height: 400px;"></div>
+        </div>
+        <script>
+
+            var map = L.map('mapid').setView([
+                50.85624291019714, 4.35333251953125], 11);
+
+            L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+
+            }).addTo(map);
+
+            let greenIcon = L.icon({
+                iconUrl: 'cat.png',
+                iconSize: [32, 37], // size of the icon
+                iconAnchor: [16, 37], // point of the icon which will correspond to marker's location
+                popupAnchor: [0, -31] // point from which the popup should open relative to the iconAnchor
+            });
+
+
+            let umbrellaIcon = L.icon({
+                iconUrl: 'umbrella-2.png',
+                iconSize: [45, 57], // size of the icon
+                iconAnchor: [16, 37], // point of the icon which will correspond to marker's location
+                popupAnchor: [0, -31] // point from which the popup should open relative to the iconAnchor
+            });
+
+            let popup = L.popup()
+                .setLatLng([50.85624291019714, 4.35333251953125])
+                .setContent('<p>Hello world!<br />This is a nice popup.</p> <img src="https://via.placeholder.com/120"/> ')
+                .openOn(map);
+
+
+
+            //popup from documentation popup
+            L.marker([50.85624291019714, 4.35333251953125], { icon: umbrellaIcon }).addTo(map).bindPopup(popup);
+
+            //popup on icon
+            L.marker([50.85624291019714, 3.35333251953125], { icon: greenIcon }).addTo(map).bindPopup('hi tamuna');
+
+            map.on('click', onMapClick);
+
+        </script>
+    </body>
+
+</html>
